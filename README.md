@@ -9,6 +9,7 @@ cd dev-vhost-manager && make install
 ### APACHE
 ```sh
 <VirtualHost *:80>
+
     ServerAdmin root@email.local
     DocumentRoot "/your/dir/www/dev-vhost-manager"
     ServerName local.local
