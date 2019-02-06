@@ -6,7 +6,7 @@ Pour les développeur web : Gestion des vhosts dans le localhost
 cd dev-vhost-manager && make install
 ```
 
-### APACHE
+### Apache - vhost.conf
 ```sh
 <VirtualHost *:80>
 
