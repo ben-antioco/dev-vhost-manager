@@ -9,7 +9,7 @@
 
         public function __construct()
         {
-            require_once '../config.php';
+            require_once dirname( dirname( __FILE__ ) ).'/config.php';
 
             $this->host         = $conf_host;
             $this->db_name      = $conf_db_name;
