@@ -1,0 +1,34 @@
+.list_items_container{
+    position: relative;
+    overflow: hidden;
+}
+
+.list_item{
+    position: relative;
+    overflow: hidden;
+    margin: 5px 10px;
+
+    border: 1px solid #cccccc;
+}
+
+.list_item_action{
+
+    position: relative;
+    overflow: hidden;
+}
+
+.list_item_content{
+
+    position: relative;
+    overflow: hidden;
+    display: flex;
+}
+
+.list_item_img{
+
+    width: 100px;
+    height: 100px;
+    background-size : 50% auto;
+    background-repeat: no-repeat;
+    background-position:center center;
+}

@@ -1,0 +1,9 @@
+dist/*
+node_modules/*
+uploads/*
+!uploads/index.php
+package-lock.json
+*.save
+*.log
+
+config.php

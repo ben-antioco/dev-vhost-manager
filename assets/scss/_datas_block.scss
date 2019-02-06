@@ -1,0 +1,159 @@
+.data_container{
+    position: relative;
+    overflow: hidden;
+    padding: 10px;
+    margin: 0 20px 10px 20px;
+}
+
+.data_item{
+
+    width: 16.66%;
+    text-align: center;
+    padding: 10px 0 0 10px;
+    min-width: 250px;
+}
+
+
+.in_data_item{
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #cccccc;
+    transition: box-shadow .5s;
+    background-color: #FFFFFF
+}
+
+.in_data_item:hover{
+
+    -moz-box-shadow: 0px 0px 20px 0px #7e7e7e;
+    -webkit-box-shadow: 0px 0px 20px 0px #7e7e7e;
+    -o-box-shadow: 0px 0px 20px 0px #7e7e7e;
+    box-shadow: 0px 0px 20px 0px #7e7e7e;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#7e7e7e, Direction=NaN, Strength=20);
+    
+    transition: box-shadow .5s;
+}
+
+
+.item_vhost_img{
+    position: relative;
+    overflow: hidden;
+    min-height: 200px;
+    max-height: 200px;
+
+    background-size : 50% auto;
+    background-repeat: no-repeat;
+    background-position:center center;
+
+    border-bottom: 1px solid #cccccc;
+}
+
+.item_vhost_env{
+    position: absolute;
+    left: 10px;
+    bottom: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 5px 20px;
+
+    background-color: #FFFFFF;
+    border: 1px solid #1b1b1b;
+    color: #1b1b1b;
+}
+
+.color_local{
+
+    border: 1px solid #cccccc;
+    color: #cccccc;
+
+}
+
+.color_dev{
+
+    border: 1px solid #61a2ec;
+    color: #61a2ec;
+    
+}
+
+.color_stag{
+
+    border: 1px solid #d255eb;
+    color: #d255eb;
+    
+}
+
+.color_prod{
+
+    border: 1px solid #56b356;
+    color: #56b356;
+    
+}
+
+.item_vhost_name{
+    position: relative;
+    padding: 20px 5px;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.item_vhost_domain{
+    position: relative;
+    padding: 5px;
+    padding: 10px 5px 20px 5px;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.item_vhost_position{
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 20px;
+    font-weight: 100;
+    padding: 5px 10px;
+    color: #cccccc; 
+
+    border-top: 1px solid #cccccc;
+    border-left: 1px solid #cccccc;
+
+}
+
+.item_params{
+    position: relative;
+    overflow: hidden;
+    font-size: 13px;
+
+    /*border-bottom: 1px dashed #cccccc*/
+}
+
+.param_move{
+    float: left;
+    margin: 5px;
+    padding: 3px 10px;
+    cursor: pointer;
+    /*border: 1px solid #cccccc;*/
+    color: #cccccc;
+    font-size: 22px;
+    transition: color .5s;
+
+}
+.param_move:hover{
+    color: #858585;
+    transition: color .5s;
+}
+
+
+.param_delete{
+    float: right;
+    margin: 5px;
+    padding: 3px 10px;
+    cursor: pointer;
+    font-size: 22px;
+    color: #f35656;
+    transition: color .5s;
+}
+.param_delete:hover{
+    color: #ff0000;
+    transition: color .5s;
+}

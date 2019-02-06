@@ -1,0 +1,43 @@
+body{
+    margin: 0;
+    padding: 0;
+    color:#1b1b1b;
+    font-family: 'Dosis', sans-serif;
+    font-size: 16px;
+}
+
+a{
+    color: #1b1b1b;
+    text-decoration: inherit;
+}
+
+.keyword_data_hidden{
+    display: none;
+}
+
+pre.pre_top{
+    position: fixed;
+    top: 0;
+    left:0;
+    right: 0;
+    z-index: 9995;
+    background-color: #1b1b1b;
+    color: #FFF;
+    font-size: 12px;
+    padding: 10px;
+    text-align: center;
+    margin: 0 0;
+}
+
+
+.ui-sortable-placeholder{
+    visibility: visible !important;
+    border: 1px dashed #8b8b8b !important;
+    background-color: #F2F2F2;
+}
+
+
+*, *:after, *:before{
+    box-sizing: border-box;
+    outline: none;
+}

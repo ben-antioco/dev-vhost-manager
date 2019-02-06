@@ -1,0 +1,5 @@
+<?php
+$conf_host           = "your_host";
+$conf_db_name        = "local_db";
+$conf_db_user        = "your_db_user";
+$conf_db_userpass    = "your_db_pass";

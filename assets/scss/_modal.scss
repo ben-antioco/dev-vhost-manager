@@ -1,0 +1,48 @@
+.modal{
+    display: none;
+    z-index: 9999;
+}
+
+.modal_confirm{
+    position: fixed;
+    top: 20%;
+    width: 25%;
+    left: 37.5%;
+    right: 37.5%;
+    background-color: #FFFFFF;
+    min-height: 100px;
+    border: 1px solid #cccccc;
+    text-align: center;
+    padding: 20px;
+
+    -moz-box-shadow: 0px 0px 30px 0px #000000;
+    -webkit-box-shadow: 0px 0px 30px 0px #000000;
+    -o-box-shadow: 0px 0px 30px 0px #000000;
+    box-shadow: 0px 0px 30px 0px #000000;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#000000, Direction=NaN, Strength=30);
+}
+
+.modal_title{
+    position: relative;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.modal_flex{
+    display: flex;
+    justify-content: center;
+}
+
+.confirm_btn{
+    margin: 10px;
+    padding: 10px 20px;
+    border: 1px solid #cccccc;
+    cursor: pointer;
+}
+
+.cancel_btn{
+    margin: 10px;
+    padding: 10px 20px;
+    border: 1px solid #cccccc;
+    cursor: pointer;
+}

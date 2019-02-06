@@ -1,0 +1,111 @@
+.action_container{
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+}
+
+.action_add{
+    color: #cccccc;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.form_container{
+    position: relative;
+    overflow: hidden;
+    padding: 10px 10px 30px 10px;
+    margin: 10px 5px;
+    border-bottom: 1px dashed #cccccc;
+}
+
+.flex_container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.flex_item_container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.field_container{
+    padding: 5px;
+}
+
+.field_label{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.search_container{
+    position: relative;
+    padding: 5px;
+    text-align: center;
+}
+
+.field_search{
+    padding: 10px;
+    width: 100%;
+    font-size: 20px;
+    border: 1px solid #cccccc;
+    background-color: #FFFFFF;
+    font-family: "Dosis", sans-serif;
+    color: #999999;
+    text-align: center;
+    margin: 0 5px;
+}
+
+#vhost_logo{
+    display: none;
+}
+
+.label_file{
+    display: block;
+    padding: 8px 30px;
+    text-align: center;
+    border: 1px solid #cccccc;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    color: #999999;
+    font-size: 14px;
+    width: 100%;
+}
+
+.input_form_add{
+    padding: 8px 5px;
+    border: 1px solid #cccccc;
+    background-color: #FFFFFF;
+    font-family: "Dosis", sans-serif;
+    color: #999999;
+    font-size: 14px;
+    width: 320px;
+    text-align: left;
+}
+
+.select_form_add{
+
+    padding: 8px 5px;
+    border: 1px solid #cccccc;
+    background-color: #FFFFFF;
+    font-family: "Dosis", sans-serif;
+    color: #999999;
+    font-size: 14px;
+    width: 320px;
+    text-align: left;
+
+}
+
+.btn_form_add{
+    padding: 8px 30px;
+    border: 1px solid #cccccc;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    font-family: "Dosis", sans-serif;
+    color: #999999;
+    font-size: 14px;
+}
