@@ -15,6 +15,7 @@
 
                         <div data-id="<?php echo $data['id']; ?>" class="item_params">
                             <?php if( $stateEnv ): ?><div class="param_move"><i class="fas fa-grip-horizontal"></i></div><?php endif; ?>
+                            <div class="param_edit"><i class="fas fa-edit"></i></div>
                             <div class="param_delete"><i class="fas fa-window-close"></i></div>
                         </div>
 

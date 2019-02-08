@@ -28,10 +28,10 @@
 
                 <div class="field_container">
                     <select class="select_form_add" name="vhost_env">
-                        <option value="local">local</option>
-                        <option value="dev">dev</option>
+                        <option value="local">Localhost</option>
+                        <option value="dev">Developpement</option>
                         <option value="stag">staging</option>
-                        <option value="prod">prod</option>
+                        <option value="prod">Production</option>
                     </select>
                 </div>
 

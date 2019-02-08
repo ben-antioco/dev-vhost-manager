@@ -2,11 +2,12 @@
 
     require_once './class/common-function.php';
 
+    $com = new commonFunction();
+
     require_once './class/database.php';
 
-    $db     = new database();
-
-    $dbh    = $db->pdoConnexion();
+    $db         = new database();
+    $dbh        = $db->pdoConnexion();
 
     if( isset ( $_POST['hidden_post_form'] ) )
     {
@@ -18,26 +19,18 @@
 
             if( $addvhost ) 
             {
-                //echo $addvhost;
-
-                //header("Refresh:2; url=http://local.dom");
-
-                header("Refresh:0; url=http://local.dom");
+                header("Refresh:0; url=http://local.dom?result=success&type=vhost_add");
             }
         }
         else
         {
-            //echo "<pre class='pre_top'>Le vhost existe !\n</pre>";
-
-            //header("Refresh:2; url=http://local.dom");
-
-            header("Refresh:0; url=http://local.dom");
+            header("Refresh:0; url=http://local.dom?result=error&type=vhost_add");
         }
     }
 
     if( isset( $_POST['update_position'] ) )
     {
-        $updatePositionItem = $db->updatePosition( $_POST['id'], $_POST['position'] );
+        $updatePositionItem = $db->updatePosition( $com->formFilterData( $_POST['id'] ), $com->formFilterData( $_POST['position'] ) );
 
         echo $updatePositionItem;
 
@@ -46,7 +39,7 @@
 
     if( isset( $_POST['delete_item'] ) )
     {
-        $deleteItem = $db->deleteItem( $_POST['id'] );
+        $deleteItem = $db->deleteItem( $com->formFilterData( $_POST['id'] ) );
 
         echo $deleteItem;
         
@@ -55,9 +48,9 @@
 
     if( isset( $_POST['hidden_post_view'] ) )
     {
-        $paramId        = $_POST['hidden_post_view'];
+        $paramId        = $com->formFilterData( $_POST['hidden_post_view'] );
         $view           = "block";
-        $viewSelected   = $_POST['items_view'];
+        $viewSelected   = $com->formFilterData( $_POST['items_view'] );
 
         if( $viewSelected != "view_block" ) $view = "list";
 
@@ -65,17 +58,13 @@
 
         if( $updateParam )
         {
-            //echo "<pre class='pre_top'>Mise à jour de la vue réussie !\n</pre>";
-
-            //header("Refresh:2; url=http://local.dom");
-
-            header("Refresh:0; url=http://local.dom");
+            header("Refresh:0; url=http://local.dom?result=success&type=view");
         }
     }
 
     if( isset( $_POST['hidden_post_env'] ) )
     {
-        $paramId        = $_POST['hidden_post_env'];
+        $paramId        = $com->formFilterData( $_POST['hidden_post_env'] );
 
         $env = [
             "local" => 0,
@@ -93,10 +82,7 @@
 
         if( $updateParam )
         {
-            //echo "<pre class='pre_top'>Mise à jour des environements réussie !\n</pre>";
-
-            //header("Refresh:2; url=http://local.dom");
-            header("Refresh:0; url=http://local.dom");
+            header("Refresh:0; url=http://local.dom?result=success&type=env");
         }
     }
 
@@ -110,6 +96,5 @@
     {
         $stateEnv = true;
     }
-
 
     $dbh    = null;

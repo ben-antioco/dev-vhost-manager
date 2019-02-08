@@ -8,3 +8,12 @@
     </div>
     
 </div>
+
+
+<div class="modal modal_edit">
+
+    <div class="modal_close"><i class="fas fa-times-circle"></i></div>
+
+    <div class="modal_title">Memo</div>
+    
+</div>
