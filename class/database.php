@@ -6,6 +6,7 @@
         private $db_name;
         private $db_user;
         private $db_userpass;
+        private $com;
 
         public function __construct()
         {
@@ -15,6 +16,10 @@
             $this->db_name      = $conf_db_name;
             $this->db_user      = $conf_db_user;
             $this->db_userpass  = $conf_db_userpass;
+
+            require_once dirname( __FILE__ ).'/common-function.php';
+
+            $this->com  = new commonFunction();
         }
 
         public function pdoConnexion()
@@ -26,9 +31,9 @@
 
         public function checkVhost( $post )
         {
-            $vhost_name             = $post['vhost_name'];
-            $vhost_local_domain     = $post['vhost_local_domain'];
-            $vhost_env              = $post['vhost_env'];
+            $vhost_name             = $this->com->formFilterData( $post['vhost_name'] );
+            $vhost_local_domain     = $this->com->formFilterData( $post['vhost_local_domain'] );
+            $vhost_env              = $this->com->formFilterData( $post['vhost_env'] );
 
             $dbh    = $this->pdoConnexion();
 
@@ -67,7 +72,7 @@
 
             if ( isset( $post['vhost_name'] ) && isset( $post['vhost_local_domain'] ) && isset( $file ) )
             {
-                $uploadfile = $this->uploadFile( $file, $post['vhost_name'] );
+                $uploadfile = $this->uploadFile( $file, $this->com->formFilterData( $post['vhost_name'] ) );
 
                 if( $uploadfile['result'] )
                 {
@@ -77,13 +82,13 @@
                     $count      = count( $vhosts );
                     $position   = $count +1;
 
-                    $dbh    = $this->pdoConnexion();
+                    $dbh        = $this->pdoConnexion();
 
-                    $stmt = $dbh->prepare("INSERT INTO vhost (vhost_name, vhost_local_domain, vhost_logo, position, env) VALUES (:vhost_name, :vhost_local_domain, :vhost_logo, :position, :env)");
+                    $stmt       = $dbh->prepare("INSERT INTO vhost (vhost_name, vhost_local_domain, vhost_logo, position, env) VALUES (:vhost_name, :vhost_local_domain, :vhost_logo, :position, :env)");
 
-                    $stmt->bindParam(':vhost_name', $post['vhost_name']);
+                    $stmt->bindParam(':vhost_name', $this->com->formFilterData( $post['vhost_name'] ) );
 
-                    $stmt->bindParam(':vhost_local_domain', $post['vhost_local_domain']);
+                    $stmt->bindParam(':vhost_local_domain', $this->com->formFilterData( $post['vhost_local_domain'] ) );
 
                     $stmt->bindParam(':vhost_logo', $filename);
 
@@ -106,11 +111,13 @@
         {
             $result     = false;
 
-            $name   = $file["vhost_logo"]["name"];
+            $name       = $file["vhost_logo"]["name"];
 
-            $ext    = end((explode(".", $name)));
+            $ext        = end( ( explode( ".", $name ) ) );
 
-            $filename   = preg_replace('/\s+/', '-', $vhostName).".".$ext;
+            $datetime   = new Datetime();
+
+            $filename   = $datetime->format( 'YmdHis' ).".".$ext;
 
             $uploaddir  = './uploads/';
 
@@ -118,12 +125,12 @@
 
             if ( move_uploaded_file( $file['vhost_logo']['tmp_name'], $uploadfile ) ) 
             {
-                $echo =  "<pre class='pre_top'>Le fichier est valide, et a été téléchargé avec succès. Voici plus d'informations :\n</pre>";
+                $echo   = "success";
                 $result = true;
             } 
             else 
             {
-                $echo =  "<pre class='pre_top'>Attaque potentielle par téléchargement de fichiers. Voici plus d'informations :\n</pre>"; 
+                $echo   =  "error"; 
             }
 
             return [
@@ -140,21 +147,21 @@
 
             $dbh    = $this->pdoConnexion();
 
-            $data = [
-                'position' => (int)$position,
-                'id' => $id
+            $data   = [
+                'position'  => (int)$position,
+                'id'        => $id
             ];
 
-            $sql = "UPDATE vhost SET position=:position WHERE id=:id";
+            $sql    = "UPDATE vhost SET position=:position WHERE id=:id";
 
-            $stmt= $dbh->prepare($sql);
+            $stmt   = $dbh->prepare($sql);
 
             if( $stmt->execute( $data ) )
             {
                 $result = "La mise à jour de la position réussie !";
             }
 
-            $dbh    = null;
+            $dbh = null;
 
             return $result;
         }
@@ -169,9 +176,9 @@
 
             $stmt->execute( [ 'id' => $id ] );
 
-            $data = $stmt->fetch();
+            $data   = $stmt->fetch();
 
-            $dbh  = null;
+            $dbh    = null;
 
             return $data;
         }
@@ -216,7 +223,7 @@
 
             $getData->execute();
 
-            $data   = $getData->fetchAll();
+            $data       = $getData->fetchAll();
 
             if( $data ) $data = $data[0];
 
@@ -235,7 +242,7 @@
                 $dbh    = $this->pdoConnexion();
 
                 $data = [
-                    'view' => $dataValue,
+                    'view' => $this->com->formFilterData( $dataValue ),
                     'id' => $id
                 ];
 
@@ -251,16 +258,17 @@
 
             if( $paramType === "env" ) 
             {
-                $result = false;
+                $result     = false;
 
-                $dbh    = $this->pdoConnexion();
+                $dbh        = $this->pdoConnexion();
 
-                $data       = $dataValue;
+                $data       = $this->com->formFilterData( $dataValue );
+
                 $data['id'] = $id;
 
-                $sql = "UPDATE params SET local=:local, dev=:dev, stag=:stag, prod=:prod WHERE id=:id";
+                $sql        = "UPDATE params SET local=:local, dev=:dev, stag=:stag, prod=:prod WHERE id=:id";
 
-                $stmt= $dbh->prepare($sql);
+                $stmt       = $dbh->prepare($sql);
 
                 if( $stmt->execute( $data ) )
                 {
