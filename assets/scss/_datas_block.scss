@@ -144,16 +144,32 @@
 }
 
 
+.param_edit{
+    float: left;
+    margin: 5px;
+    padding: 3px 10px;
+    cursor: pointer;
+    /*border: 1px solid #cccccc;*/
+    color: #cccccc;
+    font-size: 22px;
+    transition: color .5s;
+
+}
+.param_edit:hover{
+    color: #858585;
+    transition: color .5s;
+}
+
 .param_delete{
     float: right;
     margin: 5px;
     padding: 3px 10px;
     cursor: pointer;
     font-size: 22px;
-    color: #f35656;
+    color: $red;
     transition: color .5s;
 }
 .param_delete:hover{
-    color: #ff0000;
+    color: $red_hover;
     transition: color .5s;
 }
