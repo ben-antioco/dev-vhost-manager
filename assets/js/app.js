@@ -49,14 +49,15 @@ function Icontains( inputText, valueLength=2 ) {
 
 		if( searchvalue.length >= valueLength ){
 
-			$('.table_list_paginate').hide();
-
 			$('.keyword_data').addClass('keyword_data_hidden');
-			var keyword = $('.keyword_data:icontains("'+searchvalue+'")').removeClass('keyword_data_hidden').addClass('keyword_data_visible');
+            var keyword = $('.keyword_data:icontains("'+searchvalue+'")').removeClass('keyword_data_hidden');
+            
+            $('.param_move').hide();
 		}
 		else{
-			$('.table_list_paginate').show();
-			$('.keyword_data').removeClass('keyword_data_hidden keyword_data_visible');
+            $('.keyword_data').removeClass('keyword_data_hidden');
+            
+            $('.param_move').show();
 		}
 	});
 }
@@ -99,7 +100,7 @@ function ajaxUpdatePosition( itemId, index ){
 
         $('body').append('<pre class="ajax_result_html pre_top">'+result+'</pre>');
 
-        setTimeout( function(){ $('.ajax_result_html').remove(); }, 2000);
+        setTimeout( function(){ $('.ajax_result_html').remove(); }, 1000);
     });
 }
 
@@ -166,14 +167,19 @@ $d.off('click', '.param_delete').on('click', '.param_delete', function(){
     });
 });
 
+$d.off('click', '.param_edit').on('click', '.param_edit', function(){
 
-/*
-$d.off('mouseenter', '#nav_hover').on('mouseenter', '#nav_hover', function(){
+    var itemId = $(this).parent().attr('data-id');
 
-    $('#nav_container').fadeIn( 300 );
+    $('.modal_edit').fadeIn( 300 );
 });
 
-*/
+
+$d.off('click', '.modal_close').on('click', '.modal_close', function(){
+
+    $('.modal').fadeOut( 300 );
+});
+
 
 $d.off('click', '.nav_open').on('click', '.nav_open', function(){
 
@@ -181,14 +187,6 @@ $d.off('click', '.nav_open').on('click', '.nav_open', function(){
 });
 
 
-
-/*
-$d.off('mouseenter', '.in_data_item, .list_item').on('mouseenter', '.in_data_item, .list_item', function(){
-
-    $('#nav_container').fadeOut( 300 );
-});
-
-*/
 
 $d.off('click', '.nav_close').on('click', '.nav_close', function(){
     $('#nav_container').fadeOut( 300 );
