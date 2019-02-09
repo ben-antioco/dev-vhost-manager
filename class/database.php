@@ -29,6 +29,11 @@
             return $dbh;
         }
 
+        /**
+         * CHECK VHOST
+         * @param {array} $_POST
+         * @return array
+         */
         public function checkVhost( $post )
         {
             $vhost_name             = $this->com->formFilterData( $post['vhost_name'] );
@@ -50,7 +55,7 @@
             return $data;
         }
 
-
+        
         public function getAllVhostDatas()
         {
             $dbh    = $this->pdoConnexion();
@@ -72,7 +77,7 @@
 
             if ( isset( $post['vhost_name'] ) && isset( $post['vhost_local_domain'] ) && isset( $file ) )
             {
-                $uploadfile = $this->uploadFile( $file, $this->com->formFilterData( $post['vhost_name'] ) );
+                $uploadfile = $this->uploadFile( $file );
 
                 if( $uploadfile['result'] )
                 {
@@ -107,7 +112,58 @@
             }
         }
 
-        public function uploadFile( $file, $vhostName )
+        public function updateVhost( $post, $file=false )
+        {
+            $result     = false;
+
+            $dbh    = $this->pdoConnexion();
+
+            $sql    =  "SELECT id FROM vhost WHERE id=:id";
+
+            $stmt   = $dbh->prepare( $sql );
+
+            $stmt->execute( [ 'id' => $post['vhost_id_edit']  ] );
+
+            $checkVhost = $stmt->fetch();
+
+            if( $checkVhost )
+            {
+                $data = [
+                    'vhost_name' => $post['vhost_name_edit'],
+                    'vhost_local_domain' => $post['vhost_local_domain_edit'],
+                    'env' => $post['env_edit'],
+                    'vhost_description' => $post['vhost_description_edit'],
+                    'id' => $post['vhost_id_edit']
+                ];
+
+
+                if( $file )
+                {
+                    $uploadfile = $this->uploadFile( $file );
+
+                    if( $uploadfile['result'] )
+                    {
+                        $filename           = $uploadfile['filename'];
+                        $data['vhost_logo'] = $filename;
+                     }
+                }
+
+                
+
+                $sql    = "UPDATE vhost SET vhost_name=:vhost_name, vhost_local_domain=:vhost_local_domain, env=:env, vhost_description=:vhost_description WHERE id=:id";
+                
+                $stmt   = $dbh->prepare( $sql );
+
+                if( $stmt->execute( $data ) )
+                {
+                    $result = "success";
+                }
+            }
+
+            return $result;
+        }
+
+        public function uploadFile( $file )
         {
             $result     = false;
 
@@ -153,8 +209,7 @@
             ];
 
             $sql    = "UPDATE vhost SET position=:position WHERE id=:id";
-
-            $stmt   = $dbh->prepare($sql);
+            $stmt   = $dbh->prepare( $sql );
 
             if( $stmt->execute( $data ) )
             {

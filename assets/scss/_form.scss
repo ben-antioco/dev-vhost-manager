@@ -60,7 +60,8 @@
     margin: 0 5px;
 }
 
-#vhost_logo{
+#vhost_logo,
+#modal_edit_logo{
     display: none;
 }
 
@@ -83,8 +84,8 @@
     font-family: "Dosis", sans-serif;
     color: #999999;
     font-size: 14px;
-    width: 320px;
     text-align: left;
+    width: 100%;
 }
 
 .select_form_add{
@@ -95,8 +96,20 @@
     font-family: "Dosis", sans-serif;
     color: #999999;
     font-size: 14px;
-    width: 320px;
     text-align: left;
+    width: 100%;
+}
+
+.textarea_form_add{
+
+    padding: 8px 5px;
+    border: 1px solid #cccccc;
+    background-color: #FFFFFF;
+    font-family: "Dosis", sans-serif;
+    color: #999999;
+    font-size: 14px;
+    text-align: left;
+    width: 100%;
 
 }
 

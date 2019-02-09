@@ -25,7 +25,7 @@
 
 .modal_edit{
     position: fixed;
-    top: 20%;
+    top: 10%;
     width: 50%;
     left: 25%;
     right: 25%;
@@ -74,4 +74,13 @@
     padding: 10px 20px;
     border: 1px solid #cccccc;
     cursor: pointer;
+}
+
+
+.modal_flex_container{
+    display: flex;
+}
+
+.modal_edit_flex{
+    width: 50%;
 }

@@ -86,6 +86,38 @@
         }
     }
 
+    if( isset( $_POST['edit_item_get'] ) )
+    {
+        $editItemGet = $db->selectVhost( $com->formFilterData( $_POST['id'] ) );
+
+        echo json_encode( $editItemGet );
+        
+        exit;
+    }
+
+    if( isset( $_POST['vhost_edit_post'] ) && isset( $_FILES['vhost_logo_edit'] )  )
+    {
+        $vhostUpdate = false;
+
+        if( ( $_FILES['vhost_logo_edit']['name'] != '' ) && ( $_FILES['vhost_logo_edit']['tmp_name'] != '' ) && ( $_FILES['vhost_logo_edit']['size'] >= 1 ) )
+        {
+            $vhostUpdate    = $db->updateVhost( $_POST, $_FILES );
+        }
+        else
+        {
+            $vhostUpdate    = $db->updateVhost( $_POST );
+        }
+
+        if( $vhostUpdate )
+        {
+            header("Refresh:0; url=http://local.dom?result=success&type=vhost_update");
+        }
+        else
+        {
+            header("Refresh:0; url=http://local.dom?result=error&type=vhost_update");
+        }
+    }
+
     $datas      = $db->getAllVhostDatas();
 
     $params     = $db->getParams();
