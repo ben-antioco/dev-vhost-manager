@@ -170,11 +170,9 @@
             $name       = $file["vhost_logo"]["name"];
 
             $tmp        = explode( ".", $name );
-
             $ext        = end( $tmp );
 
             $datetime   = new Datetime();
-
             $filename   = $datetime->format( 'YmdHis' ).".".$ext;
 
             $uploaddir  = './uploads/';
