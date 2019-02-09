@@ -169,7 +169,9 @@
 
             $name       = $file["vhost_logo"]["name"];
 
-            $ext        = end( ( explode( ".", $name ) ) );
+            $tmp        = explode( ".", $name );
+
+            $ext        = end( $tmp );
 
             $datetime   = new Datetime();
 
