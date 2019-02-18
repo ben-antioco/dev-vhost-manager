@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mer. 06 fév. 2019 à 09:11
+-- Généré le :  lun. 18 fév. 2019 à 19:00
 -- Version du serveur :  10.3.12-MariaDB-log
--- Version de PHP :  7.3.1
+-- Version de PHP :  7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -56,8 +56,13 @@ CREATE TABLE `vhost` (
   `vhost_local_domain` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `vhost_logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `position` int(11) DEFAULT 0,
-  `env` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'local'
+  `env` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'local',
+  `vhost_description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `vhost`
+--
 
 
 --
@@ -90,7 +95,7 @@ ALTER TABLE `params`
 -- AUTO_INCREMENT pour la table `vhost`
 --
 ALTER TABLE `vhost`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
