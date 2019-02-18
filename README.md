@@ -28,7 +28,7 @@ cp config.php.dist config.php
     ErrorLog "/your/dir/www/httpd_logs/local.dom-error_log"
     CustomLog "/your/dir/www/httpd_logs/local.dom-access_log" common
 
-    <Directory "/your/dir/www/app_dev/dev-vhost-manager">
+    <Directory "/your/dir/www/dev-vhost-manager">
         AllowOverride All
         Require all granted
         Order allow,deny
