@@ -6,6 +6,17 @@ Pour les développeur web : Gestion des vhosts dans le localhost
 cd dev-vhost-manager && make install
 ```
 
+
+Créer une base de données "local_db"
+```sh
+mysql -h 127.0.0.1 -u root -p local_db
+```
+
+Copier le fichier config.php.dist en config.php, renseigner les info de votre base de données
+```sh
+cp config.php.dist config.php
+```
+
 ### Apache - vhost.conf
 ```sh
 <VirtualHost *:80>
