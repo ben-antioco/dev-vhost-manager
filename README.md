@@ -25,8 +25,8 @@ cp config.php.dist config.php
     DocumentRoot "/your/dir/www/dev-vhost-manager"
     ServerName local.local
     ServerAlias local.local
-    ErrorLog "/your/dir/www/httpd_logs/local.dom-error_log"
-    CustomLog "/your/dir/www/httpd_logs/local.dom-access_log" common
+    ErrorLog "/your/dir/www/httpd_logs/local.local-error_log"
+    CustomLog "/your/dir/www/httpd_logs/local.local-access_log" common
 
     <Directory "/your/dir/www/dev-vhost-manager">
         AllowOverride All
