@@ -24,7 +24,7 @@
 
                 <div class="field_container">
 
-                    <label class="label_file" for="modal_edit_logo">
+                    <label class="modal_label_file" for="modal_edit_logo">
 
                         <img id="modal_edit_logo_img" src="">
 
@@ -90,6 +90,8 @@
             <input type="hidden" name="vhost_edit_post" value="1">
 
             <div><button class="btn_form_add" type="submit">VALIDER</button></div>
+
+            <br>
 
         </div>
 

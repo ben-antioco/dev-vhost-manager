@@ -129,3 +129,24 @@
 .modal_edit_flex{
     width: 50%;
 }
+
+#modal_edit_logo_img{
+    max-width: 200px;
+    /*height: 195px;*/
+    height: auto;
+}
+
+.modal_label_file{
+    display: block;
+    overflow: hidden;
+    padding: 8px 30px;
+    text-align: center;
+    border: 1px solid #cccccc;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    color: #999999;
+    font-size: 14px;
+    width: 100%;
+    min-height: 215px;
+    max-height: 215px;
+}

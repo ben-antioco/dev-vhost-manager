@@ -3,6 +3,12 @@
     overflow: hidden;
     padding: 10px;
     margin: 0 20px 10px 20px;
+    transition: margin .6s;
+}
+
+.data_container_move{
+    margin: 0 20px 10px 330px;
+    transition: margin .1s;
 }
 
 .data_item{

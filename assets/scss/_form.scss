@@ -67,6 +67,7 @@
 
 .label_file{
     display: block;
+    overflow: hidden;
     padding: 8px 30px;
     text-align: center;
     border: 1px solid #cccccc;
@@ -75,6 +76,8 @@
     color: #999999;
     font-size: 14px;
     width: 100%;
+    /*min-height: 215px;*/
+    max-height: 215px;
 }
 
 .input_form_add{
