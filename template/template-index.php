@@ -11,9 +11,9 @@
 
     if( isset( $_POST['get_update'] ) )
     {
-        $output = shell_exec('git status');
+        $output = shell_exec('git status -s');
 
-        var_dump( $output );
+        //var_dump( $output );
 
         echo $output;
 
