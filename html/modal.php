@@ -14,7 +14,7 @@
 
     <div class="modal_close"><i class="fas fa-times-circle"></i></div>
 
-    <div class="modal_title">Memo</div>
+    <div class="modal_title"></div>
 
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST" enctype="multipart/form-data">
 
@@ -38,13 +38,21 @@
 
             <div class="modal_edit_flex">
 
-                <div class="field_container"><input class="input_form_add" id="modal_edit_vhost_name" type="text" name="vhost_name_edit"></div>
+                <div class="field_container">
+                    <label class="modal_label_field" for="modal_edit_vhost_name">Nom du vhost</label>
+                    <input class="input_form_add" id="modal_edit_vhost_name" type="text" name="vhost_name_edit" required>
+                </div>
 
-                <div class="field_container"><input class="input_form_add" id="modal_edit_vhost_local_domain" type="text" name="vhost_local_domain_edit"></div>
+                <div class="field_container">
+                    <label class="modal_label_field" for="modal_edit_vhost_local_domain">Url du vhost</label>
+                    <input class="input_form_add" id="modal_edit_vhost_local_domain" type="text" name="vhost_local_domain_edit" required>
+                </div>
 
                 <div class="field_container">
 
-                    <select class="select_form_add" name="env_edit" id="modal_edit_env">
+                    <label class="modal_label_field" for="modal_edit_vhost_local_domain">Environement du vhost</label>
+
+                    <select class="select_form_add" name="env_edit" id="modal_edit_env" required>
                         <option value="local">Localhost</option>
                         <option value="dev">Developpement</option>
                         <option value="stag">Staging</option>
@@ -61,15 +69,27 @@
 
             <div class="field_container">
 
-                <textarea class="textarea_form_add" name="vhost_description_edit" id="modal_edit_vhost_description" cols="30" rows="10"></textarea>
+                <label class="modal_label_field" for="modal_edit_vhost_local_domain">Détail ou memo du vhost</label>
+
+                <textarea class="textarea_form_add" name="vhost_description_edit" id="modal_edit_vhost_description" cols="30" rows="5"></textarea>
 
             </div>
+
+        </div>
+
+        <div>
+
+            <div class="field_container"><label class="modal_label_field" for="modal_edit_vhost_access">Ajouter des acces <span class="modal_vhost_access_add"><i class="fas fa-plus-square"></i></span></label></div>
+
+            <div id="modal_acces_items" class="modal_flex_container"><!-- JS ADD --></div>
+
+            <br>
 
             <input type="hidden" id="modal_edit_vhost_id" name="vhost_id_edit">
 
             <input type="hidden" name="vhost_edit_post" value="1">
 
-            <div><button type="submit">VALIDER</button></div>
+            <div><button class="btn_form_add" type="submit">VALIDER</button></div>
 
         </div>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  lun. 18 fév. 2019 à 19:00
+-- Généré le :  mer. 20 fév. 2019 à 01:24
 -- Version du serveur :  10.3.12-MariaDB-log
 -- Version de PHP :  7.3.2
 
@@ -65,6 +65,26 @@ CREATE TABLE `vhost` (
 --
 
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `vhost_access`
+--
+
+CREATE TABLE `vhost_access` (
+  `id` int(11) NOT NULL,
+  `access_label` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `access_login` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `access_password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id_vhost` int(11) NOT NULL,
+  `updated_at` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `vhost_access`
+--
+
+
 --
 -- Index pour les tables déchargées
 --
@@ -82,6 +102,12 @@ ALTER TABLE `vhost`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `vhost_access`
+--
+ALTER TABLE `vhost_access`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -96,6 +122,12 @@ ALTER TABLE `params`
 --
 ALTER TABLE `vhost`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+
+--
+-- AUTO_INCREMENT pour la table `vhost_access`
+--
+ALTER TABLE `vhost_access`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

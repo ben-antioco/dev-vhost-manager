@@ -97,6 +97,40 @@
 
     if( isset( $_POST['vhost_edit_post'] ) && isset( $_FILES['vhost_logo_edit'] )  )
     {
+        $access = [];
+
+        $access["vhost_id"] = $_POST['vhost_id_edit'];
+        
+        if( isset( $_POST['vhost_access_label_edit'] ) )
+        {
+            $acces_label = $_POST['vhost_access_label_edit'];
+
+            foreach( $acces_label as $key => $label )
+            {
+                $access[$key]["vhost_access_label"] = $label;
+            }
+        }
+
+        if( isset( $_POST['vhost_access_login_edit'] ) )
+        {
+            $acces_login = $_POST['vhost_access_login_edit'];
+
+            foreach( $acces_login as $key => $login )
+            {
+                $access[$key]["vhost_access_login"] = $login;
+            }
+        }
+
+        if( isset( $_POST['vhost_access_password_edit'] ) )
+        {
+            $acces_password = $_POST['vhost_access_password_edit'];
+
+            foreach( $acces_password as $key => $password )
+            {
+                $access[$key]["vhost_access_password"] = $password;
+            }
+        }
+
         $vhostUpdate = false;
 
         if( ( $_FILES['vhost_logo_edit']['name'] != '' ) && ( $_FILES['vhost_logo_edit']['tmp_name'] != '' ) && ( $_FILES['vhost_logo_edit']['size'] >= 1 ) )
@@ -110,6 +144,11 @@
 
         if( $vhostUpdate )
         {
+            if( count( $access ) >= 1 )
+            {
+                $AddAccess    = $db->addAccessVhost( $access );
+            }
+
             header("Refresh:0; url=http://local.dom?result=success&type=vhost_update");
         }
         else

@@ -14,20 +14,20 @@
 
                 <div class="field_container field_label">Nom du vhost</div>
 
-                <div class="field_container"><input class="input_form_add" type="text" name="vhost_name" placeholder="Vhost name"></div>
+                <div class="field_container"><input class="input_form_add" type="text" name="vhost_name" placeholder="Vhost name" required></div>
 
                 <div class="field_container field_label">Domaine du vhost</div>
 
-                <div class="field_container"><input class="input_form_add" type="text" name="vhost_local_domain" placeholder="Vhost local domain"></div>
+                <div class="field_container"><input class="input_form_add" type="text" name="vhost_local_domain" placeholder="Vhost local domain" required></div>
 
                 <div class="field_container field_label">Logo du vhost</div>
 
-                <div class="field_container"><label class="label_file" for="vhost_logo">Vhost logo<input id="vhost_logo" class="" type="file" name="vhost_logo"></label></div>
+                <div class="field_container"><label class="label_file" for="vhost_logo">Vhost logo<input id="vhost_logo" class="" type="file" name="vhost_logo" required></label></div>
 
                 <div class="field_container field_label">Environement</div>
 
                 <div class="field_container">
-                    <select class="select_form_add" name="vhost_env">
+                    <select class="select_form_add" name="vhost_env" required>
                         <option value="local">Localhost</option>
                         <option value="dev">Developpement</option>
                         <option value="stag">staging</option>

@@ -99,7 +99,7 @@
 
                     $stmt->bindParam(':position', $position);
 
-                    $stmt->bindParam(':env', $post['vhost_env']);
+                    $stmt->bindParam(':env', $this->com->formFilterData( $post['vhost_env'] ) );
 
                     $stmt->execute();
 
@@ -110,6 +110,69 @@
 
                 return $result;
             }
+        }
+
+
+        public function addAccessVhost( $access )
+        {
+            $result = false;
+
+            if( $access['vhost_id'] )
+            {
+                $vhost_id   = (int)$this->com->formFilterData( $access['vhost_id'] );
+
+                unset($access['vhost_id']);
+
+                $dbh        = $this->pdoConnexion();
+
+                $sql    =  "SELECT id FROM vhost_access WHERE id_vhost=:id_vhost";
+
+                $stmt   = $dbh->prepare( $sql );
+
+                $stmt->execute( [ 'id_vhost' => $vhost_id ] );
+
+                $datas = $stmt->fetch();
+
+                if( $datas )
+                {
+                    $sql        = "DELETE FROM vhost_access WHERE id_vhost=:id_vhost";
+                    $stmt       = $dbh->prepare( $sql );
+
+                    $stmt->bindParam( ':id_vhost', $vhost_id );   
+                    $stmt->execute();
+                }
+
+                $datetime = new Datetime();  
+
+                if( is_array( $access ) )
+                {
+                    foreach( $access as $data )
+                    {
+                        if( $data['vhost_access_label'] && $data['vhost_access_login'] && $data['vhost_access_password'] )
+                        {
+                            $stmt = $dbh->prepare("INSERT INTO vhost_access (access_label, access_login, access_password, id_vhost, updated_at) VALUES (:access_label, :access_login, :access_password, :id_vhost, :updated_at)");
+
+                            $stmt->bindParam( ':access_label', $this->com->formFilterData( $data['vhost_access_label'] ) );
+
+                            $stmt->bindParam( ':access_login', $this->com->formFilterData( $data['vhost_access_login'] ) );
+
+                            $stmt->bindParam( ':access_password', $this->com->formFilterData( $data['vhost_access_password'] ) );
+
+                            $stmt->bindParam( ':id_vhost', $vhost_id );
+
+                            $stmt->bindParam(':updated_at', $datetime->format('Y-m-d') );
+
+                            $stmt->execute();
+
+                            $result = "success";
+                        }
+                    }
+                }
+
+                $dbh    = null;
+            }
+
+            return $result;
         }
 
         public function updateVhost( $post, $file=false )
@@ -129,11 +192,11 @@
             if( $checkVhost )
             {
                 $data = [
-                    'vhost_name' => $post['vhost_name_edit'],
-                    'vhost_local_domain' => $post['vhost_local_domain_edit'],
-                    'env' => $post['env_edit'],
-                    'vhost_description' => $post['vhost_description_edit'],
-                    'id' => $post['vhost_id_edit']
+                    'vhost_name' => $this->com->formFilterData( $post['vhost_name_edit'] ),
+                    'vhost_local_domain' => $this->com->formFilterData( $post['vhost_local_domain_edit'] ),
+                    'env' => $this->com->formFilterData( $post['env_edit'] ),
+                    'vhost_description' => $this->com->formFilterData( $post['vhost_description_edit'] ),
+                    'id' => $this->com->formFilterData( $post['vhost_id_edit'] )
                 ];
 
 
@@ -147,8 +210,6 @@
                         $data['vhost_logo'] = $filename;
                      }
                 }
-
-                
 
                 $sql    = "UPDATE vhost SET vhost_name=:vhost_name, vhost_local_domain=:vhost_local_domain, env=:env, vhost_description=:vhost_description WHERE id=:id";
                 
@@ -232,9 +293,23 @@
 
             $stmt->execute( [ 'id' => $id ] );
 
-            $data   = $stmt->fetch();
+            $vhost_data  = $stmt->fetch();
+
+
+            $sql    =  "SELECT * FROM vhost_access WHERE id_vhost=:id_vhost";
+
+            $stmt   = $dbh->prepare( $sql );
+
+            $stmt->execute( [ 'id_vhost' => $id ] );
+
+            $vhost_access  = $stmt->fetchAll();
 
             $dbh    = null;
+
+            $data = [
+                "vhost_data" => $vhost_data,
+                "vhost_access" => $vhost_access
+            ];
 
             return $data;
         }
