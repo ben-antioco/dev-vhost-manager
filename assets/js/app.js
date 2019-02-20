@@ -62,6 +62,19 @@ function Icontains( inputText, valueLength=2 ) {
 	});
 }
 
+function ajaxGetUpdate(){
+
+    $.ajax({
+        type: 'POST',
+        data: { 
+            get_update: true
+        }
+    }).done( function( result ){
+
+        console.log( result );
+    });
+}
+
 
 /**
  * INDEXES ALL ITEMS 
@@ -203,121 +216,6 @@ function ajaxEditItem( itemId ){
     });
 }
 
-
-/**
- * SORTABLE ITEMS
- */
-$(".data_items, .list_items_container").sortable({
-    handle: ".param_move",
-    tolerance: "pointer",
-    update: function( event, ui ) {
-
-        indexItem();// INDEXES ITEMS
-    }
-});
-
-/**
- * DELETE ITEM
- */
-$d.off('click', '.param_delete').on('click', '.param_delete', function(){
-
-    var itemId = $(this).parent().attr('data-id');
-
-    $('.modal_confirm').fadeIn( 300 );
-
-    $d.off('click', '.confirm_btn').on('click', '.confirm_btn', function(){
-
-        ajaxDeleteItem( itemId );
-
-        $('.modal_confirm').hide();
-    });
-
-    $d.off('click', '.cancel_btn').on('click', '.cancel_btn', function(){
-
-        $('.modal_confirm').fadeOut( 300 );
-    });
-});
-
-/**
- * EDIT ITEM
- */
-$d.off('click', '.param_edit').on('click', '.param_edit', function(){
-
-    var itemId = $(this).parent().attr('data-id');
-
-    $('.modal_edit').fadeIn( 300 );
-
-    ajaxEditItem( itemId );
-});
-
-
-$d.off('click', '.modal_close').on('click', '.modal_close', function(){
-
-    $('.modal').fadeOut( 300 );
-});
-
-
-$d.off('click', '.nav_open').on('click', '.nav_open', function(){
-
-    $('#nav_container').fadeIn( 300 );
-});
-
-
-$d.off('click', '.nav_close').on('click', '.nav_close', function(){
-    $('#nav_container').fadeOut( 300 );
-});
-
-$d.off('click', '.modal_vhost_access_add').on('click', '.modal_vhost_access_add', function(){
-
-    let access_item =
-    '<div class="modal_acces_item modal_edit_flex" data-id="0">'+
-
-        '<div class="modal_vhost_access_delete"><i class="fas fa-times-circle"></i></div>'+
-
-        '<div class="field_container">'+
-            '<label class="modal_label_field" for="">Label</label>'+
-            '<input class="input_form_add" type="text" name="vhost_access_label_edit[]" placeholder="Acces label">'+
-        '</div>'+
-
-        '<div class="field_container">'+
-            '<label class="modal_label_field" for="">Login</label>'+
-            '<input class="input_form_add" type="text" name="vhost_access_login_edit[]" placeholder="Access login">'+
-        '</div>'+
-
-        '<div class="field_container">'+
-            '<label class="modal_label_field" for="">Password</label>'+
-            '<input class="input_form_add" type="text" name="vhost_access_password_edit[]" placeholder="Access password">'+
-        '</div>'+
-
-    '</div>';
-
-
-    $('#modal_acces_items').append( access_item );  
-
-    accessLoop();
-});
-
-
-$d.off('click', '.modal_vhost_access_delete').on('click', '.modal_vhost_access_delete', function(){
-
-    let $this =$(this);
-
-    $('.modal_confirm').fadeIn( 300 );
-
-    $d.off('click', '.confirm_btn').on('click', '.confirm_btn', function(){
-
-        $this.parent('.modal_acces_item').remove();
-
-        $('.modal_confirm').hide();
-    });
-
-    $d.off('click', '.cancel_btn').on('click', '.cancel_btn', function(){
-
-        $('.modal_confirm').fadeOut( 300 );
-    });
-    
-});
-
 function accessLoop() {
 
     $('.modal_acces_item').each( function( index, item ){
@@ -326,3 +224,124 @@ function accessLoop() {
         $( item ).find('input[type="text"]').attr( 'data-id', index );
     });
 }
+
+$d.ready(function(){
+
+    ajaxGetUpdate();
+
+    /**
+     * SORTABLE ITEMS
+     */
+    $(".data_items, .list_items_container").sortable({
+        handle: ".param_move",
+        tolerance: "pointer",
+        update: function( event, ui ) {
+
+            indexItem();// INDEXES ITEMS
+        }
+    });
+
+    /**
+     * DELETE ITEM
+     */
+    $d.off('click', '.param_delete').on('click', '.param_delete', function(){
+
+        var itemId = $(this).parent().attr('data-id');
+
+        $('.modal_confirm').fadeIn( 300 );
+
+        $d.off('click', '.confirm_btn').on('click', '.confirm_btn', function(){
+
+            ajaxDeleteItem( itemId );
+
+            $('.modal_confirm').hide();
+        });
+
+        $d.off('click', '.cancel_btn').on('click', '.cancel_btn', function(){
+
+            $('.modal_confirm').fadeOut( 300 );
+        });
+    });
+
+    /**
+     * EDIT ITEM
+     */
+    $d.off('click', '.param_edit').on('click', '.param_edit', function(){
+
+        var itemId = $(this).parent().attr('data-id');
+
+        $('.modal_edit').fadeIn( 300 );
+
+        ajaxEditItem( itemId );
+    });
+
+
+    $d.off('click', '.modal_close').on('click', '.modal_close', function(){
+
+        $('.modal').fadeOut( 300 );
+    });
+
+
+    $d.off('click', '.nav_open').on('click', '.nav_open', function(){
+
+        $('#nav_container').fadeIn( 300 );
+    });
+
+
+    $d.off('click', '.nav_close').on('click', '.nav_close', function(){
+        $('#nav_container').fadeOut( 300 );
+    });
+
+    $d.off('click', '.modal_vhost_access_add').on('click', '.modal_vhost_access_add', function(){
+
+        let access_item =
+        '<div class="modal_acces_item modal_edit_flex" data-id="0">'+
+
+            '<div class="modal_vhost_access_delete"><i class="fas fa-times-circle"></i></div>'+
+
+            '<div class="field_container">'+
+                '<label class="modal_label_field" for="">Label</label>'+
+                '<input class="input_form_add" type="text" name="vhost_access_label_edit[]" placeholder="Acces label">'+
+            '</div>'+
+
+            '<div class="field_container">'+
+                '<label class="modal_label_field" for="">Login</label>'+
+                '<input class="input_form_add" type="text" name="vhost_access_login_edit[]" placeholder="Access login">'+
+            '</div>'+
+
+            '<div class="field_container">'+
+                '<label class="modal_label_field" for="">Password</label>'+
+                '<input class="input_form_add" type="text" name="vhost_access_password_edit[]" placeholder="Access password">'+
+            '</div>'+
+
+        '</div>';
+
+
+        $('#modal_acces_items').append( access_item );  
+
+        accessLoop();
+    });
+
+
+    $d.off('click', '.modal_vhost_access_delete').on('click', '.modal_vhost_access_delete', function(){
+
+        let $this =$(this);
+
+        $('.modal_confirm').fadeIn( 300 );
+
+        $d.off('click', '.confirm_btn').on('click', '.confirm_btn', function(){
+
+            $this.parent('.modal_acces_item').remove();
+
+            $('.modal_confirm').hide();
+        });
+
+        $d.off('click', '.cancel_btn').on('click', '.cancel_btn', function(){
+
+            $('.modal_confirm').fadeOut( 300 );
+        });
+
+    });
+})
+
+

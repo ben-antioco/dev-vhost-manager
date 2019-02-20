@@ -9,6 +9,18 @@
     $db         = new database();
     $dbh        = $db->pdoConnexion();
 
+    if( isset( $_POST['get_update'] ) )
+    {
+        $output = shell_exec('git status');
+
+        var_dump( $output );
+
+        echo $output;
+
+        exit;
+    }
+
+
     if( isset ( $_POST['hidden_post_form'] ) )
     {
         $checkVhost = $db->checkVhost( $_POST );
