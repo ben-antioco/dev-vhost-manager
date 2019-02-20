@@ -13,8 +13,6 @@
     {
         $output = shell_exec('git status -s');
 
-        //var_dump( $output );
-
         echo $output;
 
         exit;
