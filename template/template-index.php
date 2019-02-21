@@ -1,12 +1,14 @@
 <?php
 
-    require_once './class/common-function.php';
+    require_once './class/dump.php';
 
-    $com = new commonFunction();
+    require_once './class/CommonFunction.php';
 
-    require_once './class/database.php';
+    $com = new CommonFunction();
 
-    $db         = new database();
+    require_once './class/Database.php';
+
+    $db         = new Database();
     $dbh        = $db->pdoConnexion();
 
     if( isset( $_POST['get_update'] ) )

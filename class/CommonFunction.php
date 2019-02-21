@@ -1,5 +1,5 @@
 <?php
-class commonFunction
+class CommonFunction
 {
     /**
     * Supprimer les accents

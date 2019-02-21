@@ -1,6 +1,6 @@
 <?php
 
-    class database 
+    class Database 
     {
         private $host;
         private $db_name;
@@ -17,9 +17,9 @@
             $this->db_user      = $conf_db_user;
             $this->db_userpass  = $conf_db_userpass;
 
-            require_once dirname( __FILE__ ).'/common-function.php';
+            require_once dirname( __FILE__ ).'/CommonFunction.php';
 
-            $this->com  = new commonFunction();
+            $this->com  = new CommonFunction();
         }
 
         public function pdoConnexion()
