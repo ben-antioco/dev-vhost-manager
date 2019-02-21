@@ -1,0 +1,64 @@
+pre.dump {
+    background: #263238;
+    border-radius: 4px;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 12px;
+    color: #ECEFF1;
+    counter-reset: line;
+    left: 0;
+    letter-spacing: 1px;
+    line-height: 24px;
+    margin: auto auto 8px auto;
+    /*max-width: 640px;*/
+    overflow-x: auto;
+    padding: 20px;
+    position: relative;
+    right: 0;
+    width: 80vw;
+}
+
+pre.dump span {
+    display: inline;
+    font-family: "Lucida Console", Monaco, monospace;
+}
+
+pre.dump span.object,
+pre.dump span.array {
+    color: #06D6A0;
+}
+
+pre.dump span.boolean,
+pre.dump span.null {
+    color: #FF715B;
+}
+
+pre.dump span.null {
+    text-transform: lowercase;
+}
+
+pre.dump span.integer,
+pre.dump span.float,
+pre.dump span.primary {
+    color: #00A6FB;
+}
+
+pre.dump span.string {
+    color: #FFC447;
+}
+
+pre.dump span.arrow {
+    color: #455A64;
+    margin: 0 8px;
+}
+
+pre.dump span.public {
+    color: #ECEFF1;
+}
+
+pre.dump span.protected {
+    color: #90A4AE;
+}
+
+pre.dump span.private {
+    color: #607D8B;
+}
