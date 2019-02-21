@@ -13,7 +13,7 @@
 
     if( isset( $_POST['get_update'] ) )
     {
-        $output = shell_exec('git status -s && git pull');
+        $output = shell_exec('git status -s');
 
         echo $output;
 
