@@ -62,3 +62,7 @@ pre.dump span.protected {
 pre.dump span.private {
     color: #607D8B;
 }
+
+b{
+    color: #00aaff;
+}
