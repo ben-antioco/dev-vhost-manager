@@ -1,0 +1,75 @@
+version: "2"
+
+services:
+    ############################################
+    #           Server Configuration           #
+    ############################################
+    nginx:
+        build: docker/nginx
+        ports:
+            - "80:80"
+            - "443:443"
+        links:
+            - php
+        volumes_from:
+            - php
+        volumes:
+            - ./var/logs/nginx/:/var/log/nginx
+    
+    ###############################################
+    #           PHP Configuration                 #
+    ###############################################
+    php:
+        build: docker/php
+        ports:
+            - "9000:9000"
+            - "8080:8080"
+        links:
+            - db
+        volumes:
+            - .:/var/www/html
+            - ./var/logs:/var/www/html/var/logs
+
+
+  ###############################################
+  #           Webpack Configuration             #
+  ###############################################
+#    webpack:
+#        image: webpack
+#        build:
+#            context: ./docker/webpack
+#        ports:
+#            - "8080:8080"
+#        volumes:
+#            - ./backend/:/var/www/html:rw
+
+    ############################################
+    #          Database Configuration          #
+    ############################################
+    db:
+        build: docker/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: dev
+            MYSQL_DATABASE: dev
+            MYSQL_USER: dev
+            MYSQL_PASSWORD: dev
+        ports:
+            - "3306:3306"
+        volumes:
+            - db:/var/lib/mysql
+            - .:/var/www/html
+
+    phpmyadmin:
+      image: phpmyadmin/phpmyadmin
+      links:
+        - db
+      environment:
+        PMA_HOST: db
+        PMA_PORT: 3306
+        MYSQL_USERNAME: dev
+        MYSQL_ROOT_PASSWORD: dev
+      ports:
+        - '8181:80'
+
+volumes:
+    db: {}

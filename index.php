@@ -7,10 +7,14 @@
 
         <meta charset="UTF-8">
         <title>VHOST</title>
-        <link rel="stylesheet" href="./dist/app.css">
+    
         <script src="./assets/js/plugins/jquery-3.3.1.min.js"></script>
         <script src="./assets/js/plugins/jquery-ui-1.12.1/jquery-ui.min.js"></script>
         <link rel="stylesheet" href="./assets/lib/fontawesome-5.7.1/css/all.min.css">
+        <link rel="stylesheet" href="./dist/app.css">
+
+        <link rel="stylesheet" href="./assets/js/plugins/jodit-3.1.95/jodit.min.css">
+        <script src="./assets/js/plugins/jodit-3.1.95/jodit.min.js"></script>     
         
     </head>
 

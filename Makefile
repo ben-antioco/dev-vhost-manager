@@ -19,6 +19,19 @@ help:
 	@echo "--------------------------------------------------";
 	@echo "--------------------------------------------------";
 
+
+du: docker-up
+docker-up:
+	docker-compose up -d --build
+
+dd: docker-down
+docker-down:
+	docker-compose down
+
+bp: bash-db
+bash-php:
+	docker-compose exec db bash
+
 install: 
 	@echo "--------------------------------------------------";
 	@echo "@@@  @@@  @@@   @@@@@@   @@@@@@@   @@@@@@   @@@       @@@        @@@@@@   @@@@@@@  @@@   @@@@@@   @@@  @@@";  
@@ -36,6 +49,9 @@ install:
 	@echo "--------------------------------------------------";
 
 	mysql -h 127.0.0.1 -u root -p local_db && mysql -u root -p local_db < ./sql/local_db.sql
+
+host:
+	grep -q -F "vhostmanager.local" /etc/hosts || echo "127.0.0.1 vhostmanager.local" | sudo tee -a /etc/hosts
 
 watch: 
 	@echo "--------------------------------------------------";                                                                                                                             

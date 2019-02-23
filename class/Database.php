@@ -195,10 +195,9 @@
                     'vhost_name' => $this->com->formFilterData( $post['vhost_name_edit'] ),
                     'vhost_local_domain' => $this->com->formFilterData( $post['vhost_local_domain_edit'] ),
                     'env' => $this->com->formFilterData( $post['env_edit'] ),
-                    'vhost_description' => $this->com->formFilterData( $post['vhost_description_edit'] ),
+                    'vhost_description' => $post['vhost_description_edit'],
                     'id' => $this->com->formFilterData( $post['vhost_id_edit'] )
                 ];
-
 
                 if( $file )
                 {
