@@ -39,7 +39,7 @@ let modnav = {
     
                     $('#blah').attr('src', e.target.result);
     
-                    $('.label_file[for="vhost_logo"]').html('<img class="nav_label_logo_img" src="' + e.target.result + '">');
+                    $('.label_file[for="vhost_logo"]').append('<img class="nav_label_logo_img" src="' + e.target.result + '">');
                 };
         
                 reader.readAsDataURL( $this.files[0] );

@@ -21,6 +21,8 @@ $d.ready(function(){
     let modvhostaccess  = require('./modules/modvhostaccess.js').Init();
 
     let modmodal        = require('./modules/modmodal.js').Init();
+
+    let modjodit        = require('./modules/modjodit.js').Init();
 });
 
 

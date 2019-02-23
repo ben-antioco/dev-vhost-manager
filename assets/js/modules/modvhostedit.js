@@ -17,7 +17,7 @@ let modvhostedit = {
 
     AjaxEditItem: ( itemId )=> {
 
-        let modvhostaccess = require('./modvhostaccess.js');
+        let modvhostaccess  = require('./modvhostaccess.js');
 
         $.ajax({
             type: 'POST',
@@ -42,7 +42,10 @@ let modvhostedit = {
                     $( '#modal_edit_vhost_local_domain' ).val( data.vhost_data.vhost_local_domain );
     
                     $( '#modal_edit_vhost_description' ).val( data.vhost_data.vhost_description );
-    
+
+                    if( data.vhost_data.vhost_description ) editor.value = data.vhost_data.vhost_description;
+                    else editor.value = '';
+
                     $( '#modal_edit_env' ).children( 'option[value="'+data.vhost_data.env+'"]' ).prop( 'selected', true );
     
                     $( '#modal_edit_vhost_id' ).val( data.vhost_data.id );
