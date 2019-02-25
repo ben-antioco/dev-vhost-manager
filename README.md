@@ -17,6 +17,31 @@ Copier le fichier config.php.dist en config.php, renseigner les info de votre ba
 cp config.php.dist config.php
 ```
 
+
+### Docker
+```sh
+make host
+
+make du
+```
+
+A la fin de l'installation docker
+```sh
+make ddb
+
+cd var/www/html && mysql -u dev -pdev dev < sql/local_db.sql
+```
+
+Acces à l'application
+```sh
+http://vhostmanager.local
+```
+
+Acces à phpmyadmin
+```sh
+http://vhostmanager.local:8181
+```
+
 ### Apache - vhost.conf
 ```sh
 <VirtualHost *:80>
