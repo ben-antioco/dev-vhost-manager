@@ -31,12 +31,12 @@
 
             if( $addvhost ) 
             {
-                header("Refresh:0; url=http://local.dom?result=success&type=vhost_add");
+                header("Refresh:0; url=/");
             }
         }
         else
         {
-            header("Refresh:0; url=http://local.dom?result=error&type=vhost_add");
+            header("Refresh:0; url=/");
         }
     }
 
@@ -70,7 +70,7 @@
 
         if( $updateParam )
         {
-            header("Refresh:0; url=http://local.dom?result=success&type=view");
+            header("Refresh:0; url=/");
         }
     }
 
@@ -94,7 +94,7 @@
 
         if( $updateParam )
         {
-            header("Refresh:0; url=http://local.dom?result=success&type=env");
+            header("Refresh:0; url=/");
         }
     }
 
@@ -161,11 +161,11 @@
                 $AddAccess    = $db->addAccessVhost( $access );
             }
 
-            header("Refresh:0; url=http://local.dom?result=success&type=vhost_update");
+            header("Refresh:0; url=/");
         }
         else
         {
-            header("Refresh:0; url=http://local.dom?result=error&type=vhost_update");
+            header("Refresh:0; url=/");
         }
     }
 
