@@ -87,19 +87,23 @@
                     $count      = count( $vhosts );
                     $position   = $count +1;
 
+                    $vhostName = $this->com->formFilterData( $post['vhost_name'] );
+                    $vhostLocalDomain = $this->com->formFilterData( $post['vhost_local_domain'] );
+                    $vhostEnv = $this->com->formFilterData( $post['vhost_env'] );
+
                     $dbh        = $this->pdoConnexion();
 
                     $stmt       = $dbh->prepare("INSERT INTO vhost (vhost_name, vhost_local_domain, vhost_logo, position, env) VALUES (:vhost_name, :vhost_local_domain, :vhost_logo, :position, :env)");
 
-                    $stmt->bindParam(':vhost_name', $this->com->formFilterData( $post['vhost_name'] ) );
+                    $stmt->bindParam(':vhost_name', $vhostName );
 
-                    $stmt->bindParam(':vhost_local_domain', $this->com->formFilterData( $post['vhost_local_domain'] ) );
+                    $stmt->bindParam(':vhost_local_domain', $vhostLocalDomain );
 
                     $stmt->bindParam(':vhost_logo', $filename);
 
                     $stmt->bindParam(':position', $position);
 
-                    $stmt->bindParam(':env', $this->com->formFilterData( $post['vhost_env'] ) );
+                    $stmt->bindParam(':env', $vhostEnv );
 
                     $stmt->execute();
 
@@ -150,13 +154,17 @@
                     {
                         if( $data['vhost_access_label'] && $data['vhost_access_login'] && $data['vhost_access_password'] )
                         {
+                            $vhostAccessLabel = $this->com->formFilterData( $data['vhost_access_label'] );
+                            $vhostAccessLogin = $this->com->formFilterData( $data['vhost_access_login'] );
+                            $vhostAccessPassword = $this->com->formFilterData( $data['vhost_access_password'] );
+
                             $stmt = $dbh->prepare("INSERT INTO vhost_access (access_label, access_login, access_password, id_vhost, updated_at) VALUES (:access_label, :access_login, :access_password, :id_vhost, :updated_at)");
 
-                            $stmt->bindParam( ':access_label', $this->com->formFilterData( $data['vhost_access_label'] ) );
+                            $stmt->bindParam( ':access_label', $vhostAccessLabel );
 
-                            $stmt->bindParam( ':access_login', $this->com->formFilterData( $data['vhost_access_login'] ) );
+                            $stmt->bindParam( ':access_login', $vhostAccessLogin );
 
-                            $stmt->bindParam( ':access_password', $this->com->formFilterData( $data['vhost_access_password'] ) );
+                            $stmt->bindParam( ':access_password', $vhostAccessPassword );
 
                             $stmt->bindParam( ':id_vhost', $vhost_id );
 
