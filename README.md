@@ -72,3 +72,9 @@ cd dev-vhost-manager && make watch
 ```sh
 cd dev-vhost-manager && make prod
 ```
+
+### OU
+
+- Création d'une base de donnée local_db, importer sql/local_db.sql
+- Copier config.php.dist et renommer la copie config.php, puis renseigner les paramètres de la base de donnée.
+- npm run prod pour installer les dépendances JS.
