@@ -157,6 +157,7 @@
                             $vhostAccessLabel = $this->com->formFilterData( $data['vhost_access_label'] );
                             $vhostAccessLogin = $this->com->formFilterData( $data['vhost_access_login'] );
                             $vhostAccessPassword = $this->com->formFilterData( $data['vhost_access_password'] );
+                            $updatedAt = $datetime->format('Y-m-d');
 
                             $stmt = $dbh->prepare("INSERT INTO vhost_access (access_label, access_login, access_password, id_vhost, updated_at) VALUES (:access_label, :access_login, :access_password, :id_vhost, :updated_at)");
 
@@ -168,7 +169,7 @@
 
                             $stmt->bindParam( ':id_vhost', $vhost_id );
 
-                            $stmt->bindParam(':updated_at', $datetime->format('Y-m-d') );
+                            $stmt->bindParam(':updated_at', $updatedAt );
 
                             $stmt->execute();
 
