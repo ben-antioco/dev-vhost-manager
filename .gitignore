@@ -7,3 +7,5 @@ package-lock.json
 *.log
 
 config.php
+
+/vendor/

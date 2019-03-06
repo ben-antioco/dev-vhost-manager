@@ -1,4 +1,7 @@
 <?php
+    namespace App;
+
+    use App\CommonFunction;
 
     class Database 
     {
@@ -17,14 +20,14 @@
             $this->db_user      = $conf_db_user;
             $this->db_userpass  = $conf_db_userpass;
 
-            require_once dirname( __FILE__ ).'/CommonFunction.php';
+            //require_once dirname( __FILE__ ).'/CommonFunction.php';
 
             $this->com  = new CommonFunction();
         }
 
         public function pdoConnexion()
         {
-            $dbh = new PDO( "mysql:host=".$this->host."; dbname=".$this->db_name, $this->db_user, $this->db_userpass );
+            $dbh = new \PDO( "mysql:host=".$this->host."; dbname=".$this->db_name, $this->db_user, $this->db_userpass );
 
             return $dbh;
         }
@@ -146,7 +149,7 @@
                     $stmt->execute();
                 }
 
-                $datetime = new Datetime();  
+                $datetime = new \Datetime();  
 
                 if( is_array( $access ) )
                 {
@@ -241,7 +244,7 @@
             $tmp        = explode( ".", $name );
             $ext        = end( $tmp );
 
-            $datetime   = new Datetime();
+            $datetime   = new \Datetime();
             
             $filename   = $datetime->format( 'YmdHis' ).".".$ext;
 

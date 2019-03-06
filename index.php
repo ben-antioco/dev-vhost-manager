@@ -1,4 +1,10 @@
-<?php require_once './template/template-index.php'; ?>
+<?php
+
+require_once './vendor/autoload.php';
+
+require_once './template/template-index.php'; 
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">

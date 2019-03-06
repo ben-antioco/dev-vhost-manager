@@ -2,11 +2,17 @@
 
     require_once './class/dump.php';
 
-    require_once './class/CommonFunction.php';
+    use App\{
+        CommonFunction,
+        Database,
+        dump
+    };
+
+    //require_once './class/CommonFunction.php';
 
     $com = new CommonFunction();
 
-    require_once './class/Database.php';
+    //require_once './class/Database.php';
 
     $db         = new Database();
     $dbh        = $db->pdoConnexion();

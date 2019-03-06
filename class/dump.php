@@ -1,5 +1,6 @@
 <?php
-require_once 'Dumper.php';
+//require_once 'Dumper.php';
+use App\Dumper;
 
 if (!function_exists('dump')) {
 	/**

@@ -1,0 +1,18 @@
+{
+    "name": "benja/dev-vhost-manager",
+    "authors": [
+        {
+            "name": "bantioco",
+            "email": "benjamin.antioco@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\" : "class/"
+        }
+    },
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^7.5"
+    }
+}
