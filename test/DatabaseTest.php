@@ -7,12 +7,16 @@ class DatabaseTest extends TestCase
 
     public function testcheckVhost()
     {
-        $this->assertIsArray( [] );
+        //$this->assertIsArray( [] );
+
+        return true;
     }
 
     public function testGetAllVhostDatas()
     {
-        $this->assertIsArray( [] );
+        //$this->assertIsArray( [] );
+
+        return true;
     }
 
 }
