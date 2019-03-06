@@ -1,6 +1,7 @@
 # dev-vhost-manager
 Pour les développeur web : Gestion des vhosts dans le localhost
 
+
 ### Installation
 ```sh
 cd dev-vhost-manager && make install
@@ -78,3 +79,13 @@ cd dev-vhost-manager && make prod
 - Création d'une base de donnée local_db, importer sql/local_db.sql
 - Copier config.php.dist et renommer la copie config.php, puis renseigner les paramètres de la base de donnée.
 - npm run prod pour installer les dépendances JS.
+
+### SCREENSHOT
+
+![alt text](screenshot/2.png)
+
+![alt text](screenshot/4.png)
+
+![alt text](screenshot/1.png)
+
+![alt text](screenshot/3.png)
