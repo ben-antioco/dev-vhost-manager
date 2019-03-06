@@ -74,7 +74,7 @@ cd dev-vhost-manager && make watch
 cd dev-vhost-manager && make prod
 ```
 
-### OU
+### Ou manuellement
 
 - Création d'une base de donnée local_db, importer sql/local_db.sql
 - Copier config.php.dist et renommer la copie config.php, puis renseigner les paramètres de la base de donnée.
