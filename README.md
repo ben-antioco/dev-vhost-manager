@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ben-antioco/dev-vhost-manager.svg?branch=master)](https://travis-ci.org/ben-antioco/dev-vhost-manager)
+
 # dev-vhost-manager
 Pour les développeur web : Gestion des vhosts dans le localhost
 
