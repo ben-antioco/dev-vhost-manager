@@ -23,6 +23,11 @@ Copier le fichier config.php.dist en config.php, renseigner les info de votre ba
 $ cp config.php.dist config.php
 ```
 
+Installer les dépendences
+```sh
+$ npm install && composer install
+```
+
 
 ### Docker
 ```sh
@@ -83,7 +88,7 @@ $ cd dev-vhost-manager && make prod
 
 - Création d'une base de donnée local_db, importer sql/local_db.sql
 - Copier config.php.dist et renommer la copie config.php, puis renseigner les paramètres de la base de donnée.
-- npm run prod pour installer les dépendances JS.
+- Installer les dépendances JS et PHP : npm install && composer install && npm run prod
 
 ### SCREENSHOT
 
