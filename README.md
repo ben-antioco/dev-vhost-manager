@@ -5,34 +5,36 @@ Pour les développeur web : Gestion des vhosts dans le localhost
 
 
 ### Installation
-```sh
-cd dev-vhost-manager && make install
-```
-
-
 Créer une base de données "local_db"
 ```sh
-mysql -h 127.0.0.1 -u root -p local_db
+$ mysql -u dbusername -p
+
+mysql> CREATE DATABASE IF NOT EXISTS local_db;
+
+mysql> exit
+
+$ cd chemin/vers/dev-vhost-manager/ && mysql -u dbusername -p local_db < sql/local_db.sql
+
 ```
 
 Copier le fichier config.php.dist en config.php, renseigner les info de votre base de données
 ```sh
-cp config.php.dist config.php
+$ cp config.php.dist config.php
 ```
 
 
 ### Docker
 ```sh
-make host
+$ make host
 
-make du
+$ make du
 ```
 
 A la fin de l'installation docker
 ```sh
-make ddb
+$ make ddb
 
-cd var/www/html && mysql -u dev -pdev dev < sql/local_db.sql
+$ cd var/www/html && mysql -u dev -pdev dev < sql/local_db.sql
 ```
 
 Acces à l'application
@@ -68,15 +70,15 @@ http://vhostmanager.local:8181
 
 ### Développement mode
 ```sh
-cd dev-vhost-manager && make watch
+$ cd dev-vhost-manager && make watch
 ```
 
 ### Production mode
 ```sh
-cd dev-vhost-manager && make prod
+$ cd dev-vhost-manager && make prod
 ```
 
-### Ou manuellement
+### Installation manuelle
 
 - Création d'une base de donnée local_db, importer sql/local_db.sql
 - Copier config.php.dist et renommer la copie config.php, puis renseigner les paramètres de la base de donnée.
